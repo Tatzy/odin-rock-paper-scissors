@@ -2,25 +2,25 @@
 
 
 function getComputerChoice(){
-    random = Math.random(0,1);
-
-    if(random<0.33){
+    let rand = Math.random(0,1);
+        
+    if(rand<0.33){
         return "rock";
     }
-    else if(random>0.66){
+    else if(rand>0.66){
         return "paper";
     }
     else{
-        return "scissor";
+        return "scissors";
     }
 }
 
 function getHumanChoice(){
     let correctInput = false;
-    let input;
+    let input = "";
     while(!correctInput){
     input = prompt("Type: rock, paper or scissors");
-    if(input.toLowerCase()==="rock" ||input.toLowerCase()==="paper" ||input.toLowerCase()==="sciccors")
+    if(input.toLowerCase()==="rock" ||input.toLowerCase()==="paper" ||input.toLowerCase()==="scissors")
         correctInput=true;
     }
 
@@ -57,7 +57,18 @@ function playRound(humanChoice, computerChoice){
             console.log("paper wins against rock. You win.");
             return "win";
         }
-    }   
+    }  
+    
+    if(humanChoice=="scissors"){
+        if(computerChoice=="rock"){
+            console.log("scissors does not win against rock. You lose.");
+            return "loss";
+        }
+        if(computerChoice=="paper"){
+            console.log("scissors wins against paper. You win.");
+            return "win";
+        }
+    }  
 
 }
 
@@ -74,11 +85,11 @@ for(i=0;i<5;i++){
     if(winner=="tie"){
         console.log("noone gets a point");
     }
-    if(winner=="win"){
+    else if(winner=="win"){
         console.log("Player gets a point");
         humanScore++;
     }
-    if(winner=="loss"){
+    else if(winner=="loss"){
         console.log("Computer gets a point");
         computerScore++;
     }
